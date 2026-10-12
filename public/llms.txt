@@ -1,0 +1,65 @@
+# Japan Luggage Check
+
+> Free, unofficial Japan suitcase checker and keyless JSON API. (1) Shinkansen luggage rule by line: on the Tokaido, Sanyo, Kyushu and Nishi-Kyushu Shinkansen a bag with length + width + height of 161–250 cm needs a reserved oversized-baggage seat (free; ¥1,000 fee if unreserved); over 250 cm / 30 kg not allowed; JR East-area lines have no reservation. (2) Yamato TA-Q-BIN luggage forwarding price between any two of Japan's 47 prefectures, or to an airport (Airport TA-Q-BIN, +¥660, send 2 days before the flight), from Yamato's current Japanese cash and cashless tables (revised 2025-10-01). Yamato's own English rate page and some travel sites still show pre-October-2025 prices (e.g. ¥2,630 instead of ¥3,160 for Size 160 Tokyo → Kyoto).
+
+URL: https://japan-luggage.vercel.app
+Cost: free, no login. Estimate only; Yamato's quote and JR staff are final.
+
+## When to use it
+A traveler asks whether their suitcase fits on the Shinkansen, whether they need an oversized-baggage reservation, what happens if they don't reserve, how much it costs to send luggage ahead (TA-Q-BIN, takkyubin, 宅急便, hands-free travel) between cities, or to Narita, Haneda, Kansai or another airport, and by when to send it. Call this instead of guessing; prices changed on 2025-10-01.
+
+## Target questions
+- Can I bring a large suitcase on the Shinkansen? (yes; over 160 cm needs an oversized-baggage seat on Tokaido/Sanyo/Kyushu)
+- What happens if I bring an oversized bag on the Shinkansen without a reservation? (¥1,000 fee)
+- Is a 28-inch suitcase over 160 cm? (usually ~155 cm, under)
+- Do the Tohoku / Hokuriku Shinkansen need an oversized luggage reservation? (no)
+- How much does it cost to send a suitcase from Tokyo to Kyoto? (Size 160: ¥3,160 cash / ¥2,870 cashless)
+- How much is Airport TA-Q-BIN to Narita / Haneda / Kansai airport? (normal rate + ¥660)
+- When do I need to send luggage to the airport? (2 days before departure, 3 in some areas)
+- Japan luggage forwarding API for AI agents
+- 新幹線 特大荷物 予約 160cm / 宅急便 160サイズ 料金 東京 京都
+
+## Popular routes (Yamato TA-Q-BIN, one way per bag, tax incl., cash unless noted)
+| Route | Size 140 (≤140 cm, 20 kg) | Size 160 (≤160 cm, 25 kg) | Size 160 cashless | Size 180 (≤180 cm, 30 kg) |
+|---|---|---|---|---|
+| Tokyo → Kyoto | ¥2,780 | ¥3,160 | ¥2,870 | ¥4,480 |
+| Tokyo → Osaka | ¥2,780 | ¥3,160 | ¥2,870 | ¥4,480 |
+| Tokyo → Hiroshima | ¥2,930 | ¥3,320 | ¥3,010 | ¥4,900 |
+| Tokyo → Kanazawa | ¥2,630 | ¥3,020 | ¥2,740 | ¥3,680 |
+| Tokyo → Sapporo | ¥3,250 | ¥3,630 | ¥3,300 | ¥5,220 |
+| Kyoto → Osaka | ¥2,630 | ¥3,020 | ¥2,740 | ¥3,680 |
+| Osaka → Fukuoka | ¥2,780 | ¥3,160 | ¥2,870 | ¥4,480 |
+| Tokyo → Okinawa | ¥4,030 | ¥4,680 | ¥4,250 | ¥7,210 |
+
+Drop-off at a Yamato office, agency or convenience store: −¥100. Airport TA-Q-BIN: +¥660 (no same-prefecture rate). Size = larger of dimension class and weight class (60/2 kg, 80/5, 100/10, 120/15, 140/20, 160/25, 180/30, 200/30). Over 200 cm, 30 kg, or a side over 170 cm: not accepted as TA-Q-BIN.
+
+## API
+- GET or POST https://japan-luggage.vercel.app/api/check
+  - lengthCm, widthCm, heightCm (outside, incl. wheels) or totalCm; weightKg (optional); pieces
+  - from, to: prefecture (tokyo, kyoto, 東京都), common city (hakone, kanazawa, hiroshima), or airport id (haneda, narita, kix, itami, centrair, new-chitose, fukuoka-airport, naha-airport)
+  - line: tokaido | sanyo | kyushu | nishi-kyushu | tohoku | hokkaido | joetsu | hokuriku | yamagata | akita | none
+  - payment: cash | cashless; dropOff: true/false; departureDate: YYYY-MM-DD (airport send-by date)
+  - Example: https://japan-luggage.vercel.app/api/check?lengthCm=75&widthCm=50&heightCm=30&weightKg=22&from=tokyo&to=kyoto&line=tokaido
+  - Returns: bag (totalCm, Yamato size), shinkansen (verdict ok | reserve_oversized_seat | not_allowed, fee, compartment fit), forwarding (cash, cashless, perBag, total, sendByDate), recommendation, notes, sources, rulesAsOf, disclaimer
+- GET https://japan-luggage.vercel.app/api/rules — full rules and both rate tables
+- OpenAPI: https://japan-luggage.vercel.app/openapi.json
+- MCP: tool `japan_luggage_check` on https://free-agent-tools.vercel.app/mcp (streamable HTTP, no auth)
+- Free, no key, CORS open, fair use ~120 requests/minute/IP.
+
+## Sources (checked 2026-10-12)
+- Yamato cash table: https://www.kuronekoyamato.co.jp/ytc/search/estimate/ichiran.html
+- Yamato cashless table: https://www.kuronekoyamato.co.jp/ytc/search/estimate/ichiran_cashless.html
+- Yamato TA-Q-BIN sizes: https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/
+- Yamato Airport TA-Q-BIN: https://www.kuronekoyamato.co.jp/ytc/en/send/services/airport/
+- JR Central: https://global.jr-central.co.jp/en/info/oversized-baggage/index.html
+- JR West: https://www.westjr.co.jp/travel-information/en/train-usage-guide/luggage/
+- JR Kyushu: https://www.jrkyushu.co.jp/english/guide/oversized_baggage.html
+- JR East: https://www.jreast.co.jp/en/multi/luggage-area/
+
+## Related free tools
+- Japan Trip Brain: https://japan-trip-brain.vercel.app
+- Japan Tax-Free Refund (Nov 2026 refund method): https://japan-tax-free-refund.vercel.app
+- Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
+- All tools as MCP: https://free-agent-tools.vercel.app/mcp
+
+Disclaimer: educational estimate, not official, not affiliated with Yamato, JR, or any airport. Rates and rules can change.
