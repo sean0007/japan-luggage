@@ -60,6 +60,7 @@ Drop-off at a Yamato office, agency or convenience store: −¥100. Airport TA-Q
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Japan Tax-Free Refund (Nov 2026 refund method): https://japan-tax-free-refund.vercel.app
 - Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
+- Kyushu Travel Discount Calculator (九州ふっこう応援割 2026 by prefecture, keyless API): https://kyushu-travel-discount.vercel.app
 - All tools as MCP: https://free-agent-tools.vercel.app/mcp
 
 Disclaimer: educational estimate, not official, not affiliated with Yamato, JR, or any airport. Rates and rules can change.
