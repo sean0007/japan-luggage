@@ -13,6 +13,7 @@ export const SIBLING_TOOLS = [
   { href: "https://japan-tax-free-refund.vercel.app", label: "Japan Tax-Free Refund" },
   { href: "https://japan-visa-fee.vercel.app", label: "Japan Visa Fee" },
   { href: "https://kyushu-travel-discount.vercel.app", label: "Kyushu Travel Discount" },
+  { href: "https://japan-customs-allowance.vercel.app", label: "Japan Customs Allowance" },
   { href: "https://hotel-ota-calculator.vercel.app", label: "Hotel OTA Calculator" },
   { href: "https://pitch-roast.vercel.app", label: "Pitch Roast" },
   { href: "https://saas-bill-cutter.vercel.app", label: "SaaS Bill Cutter" },
