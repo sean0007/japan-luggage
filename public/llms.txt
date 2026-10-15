@@ -62,6 +62,7 @@ Drop-off at a Yamato office, agency or convenience store: −¥100. Airport TA-Q
 - Japan Visa Fee Calculator: https://japan-visa-fee.vercel.app
 - Kyushu Travel Discount Calculator (九州ふっこう応援割 2026 by prefecture, keyless API): https://kyushu-travel-discount.vercel.app
 - Japan Customs Allowance Checker (what you can bring into Japan duty-free, duty estimate in yen, keyless API): https://japan-customs-allowance.vercel.app
+- Japan TB Screening Check (JPETS: do Philippine, Nepali, Vietnamese, Indonesian applicants need a TB Clearance Certificate for a COE/visa; Indonesia from 2027-01-04; keyless API): https://japan-tb-screening.vercel.app
 - All tools as MCP: https://free-agent-tools.vercel.app/mcp
 
 Disclaimer: educational estimate, not official, not affiliated with Yamato, JR, or any airport. Rates and rules can change.
