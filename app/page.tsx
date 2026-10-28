@@ -106,7 +106,7 @@ export default function HomePage() {
         <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">Japan luggage check: Shinkansen suitcase rule and forwarding cost</h1>
         <p className="mt-4 max-w-2xl text-lg font-medium text-foreground sm:text-xl">Will my suitcase fit on the Shinkansen, and what does it cost to send it ahead?</p>
         <p className="mt-2 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-          Over 160 cm needs an oversized-baggage seat on the Tokaido, Sanyo and Kyushu Shinkansen. Forwarding a Size 160 suitcase Tokyo → Kyoto costs {yen(tk)} cash, {yen(tkc)} by card. Enter your bag below.
+          Over 160 cm needs an oversized-baggage seat on the Tokaido, Sanyo and Kyushu Shinkansen. Forwarding a Size 160 suitcase Tokyo → Kyoto costs {yen(tk)} cash, {yen(tkc)} by card. This free Japan luggage checker (calculator) takes your bag&apos;s size and weight and gives the Shinkansen rule and the forwarding cost.
         </p>
       </section>
 
